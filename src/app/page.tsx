@@ -1,14 +1,10 @@
-import Link from 'next/link'
+import PostList from '@/components/PostList'
 
 export default function Home() {
   return (
     <main>
       <h1>블로그</h1>
-      <ul>
-        <li>
-          <Link href={'posts/wpahr'}>게시글로 이동</Link>
-        </li>
-      </ul>
+      <PostList />
     </main>
   )
 }
