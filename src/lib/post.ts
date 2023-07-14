@@ -46,7 +46,7 @@ export async function getPostByFileName(
   return blogPost
 }
 
-export async function getPostMeta(): Promise<Meta[] | undefined> {
+export async function getPostMetas(): Promise<Meta[] | undefined> {
   const res = await fetch(
     'https://api.github.com/repos/Chun-gu/blog-posts/git/trees/main?recursive=1',
     {
@@ -65,13 +65,6 @@ export async function getPostMeta(): Promise<Meta[] | undefined> {
   const fileNames = fileTree.tree
     .map((file) => file.path)
     .filter((path) => path.endsWith('.mdx'))
-
-  // const posts = await Promise.all(
-  //   fileNames.map(async (fileName) => {
-  //     const post = await getPostByFileName(fileName)
-  //     return post?.meta
-  //   })
-  // )
 
   const posts = []
 
