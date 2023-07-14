@@ -53,7 +53,7 @@ export async function getPostMeta(): Promise<Meta[] | undefined> {
       headers: {
         Accept: 'application/vnd.github+json',
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        'X-Github-Api-Version': '2022-11-28',
+        'X-GitHub-Api-Version': '2022-11-28',
       },
     }
   )
@@ -79,4 +79,6 @@ export async function getPostMeta(): Promise<Meta[] | undefined> {
     const post = await getPostByFileName(fileName)
     if (post) posts.push(post.meta)
   }
+
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1))
 }
